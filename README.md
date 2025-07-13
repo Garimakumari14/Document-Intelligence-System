@@ -7,7 +7,7 @@ An AI-powered web application that helps users quickly understand large research
 
 ---
 
-**Features**
+** Features **
 
 - Upload `.pdf` or `.txt` research documents
 - Generate concise summaries using Groq AI models
@@ -19,9 +19,9 @@ An AI-powered web application that helps users quickly understand large research
 
 ---
 
-## Setup Instructions
+** Setup Instructions **
 
-### 1. Clone the repository
+1. Clone the repository
 
 ```bash
 git clone https://github.com/yourusername/genai-research-assistant.git
