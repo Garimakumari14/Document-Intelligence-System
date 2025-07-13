@@ -1,20 +1,20 @@
-###Document Intelligent System
+Certainly! Here's a clean, professional **README.md** file for your project with clear **Setup Instructions** and a detailed **Architecture & Reasoning Flow** section:
 
 ````markdown
-###GenAI Research Assistant
+# GenAI Research Assistant
 
-An AI-powered web application that helps users quickly understand large research documents. Upload PDFs or TXT files, get instant summaries, ask questions, and test your comprehension — all powered by Groq API and semantic similarity evaluation.
+An AI-powered web application that helps users quickly understand large research documents. Upload PDFs or TXT files, get instant summaries, ask questions, and test your comprehension — all powered by the Groq API and semantic similarity evaluation using Sentence Transformers.
 
 ---
 
- Features
+## Features
 
 - Upload `.pdf` or `.txt` research documents
 - Generate concise summaries using Groq AI models
 - Ask detailed questions about the document with contextual answers
 - Test your understanding by answering AI-generated challenge questions
 - Semantic similarity scoring for answer evaluation using Sentence Transformers
-- User-friendly and interactive frontend built with Streamlit
+- Interactive and user-friendly frontend built with Streamlit
 - Lightweight backend built with Flask
 
 ---
@@ -28,13 +28,13 @@ git clone https://github.com/yourusername/genai-research-assistant.git
 cd genai-research-assistant
 ````
 
-### 2. Create and activate a Python virtual environment
+### 2. Create and activate a virtual environment
 
 ```bash
 python -m venv venv
-# On macOS/Linux
+# macOS/Linux
 source venv/bin/activate
-# On Windows
+# Windows
 venv\Scripts\activate
 ```
 
@@ -46,7 +46,7 @@ pip install -r requirements.txt
 
 ### 4. Configure environment variables
 
-Create a `.env` file in the project root and add your Groq API key:
+Create a `.env` file in the project root with your Groq API key:
 
 ```
 GROQ_API_KEY=your_groq_api_key_here
@@ -58,7 +58,7 @@ GROQ_API_KEY=your_groq_api_key_here
 python backend.py
 ```
 
-### 6. Run the Streamlit frontend (in a new terminal window)
+### 6. Run the Streamlit frontend (in a new terminal)
 
 ```bash
 streamlit run frontend/streamlit_app.py
@@ -78,78 +78,89 @@ http://localhost:8501
 
 ### Overview
 
-The GenAI Research Assistant comprises two main components:
+The GenAI Research Assistant consists of two main components:
 
-1. **Backend (Flask API)**
-2. **Frontend (Streamlit UI)**
+* **Backend:** A Flask API server handling document processing, AI calls, and answer evaluation.
+* **Frontend:** A Streamlit web app providing an interactive user interface.
 
 ---
 
 ### Backend (Flask)
 
-* **Document Upload & Text Extraction**
-  Users upload PDF or TXT files through the frontend. The backend extracts text using PyPDF2 for PDFs and decodes text files.
+1. **Document Upload & Text Extraction**
+   Users upload PDF or TXT files. The backend extracts raw text using PyPDF2 for PDFs and standard decoding for TXT files.
 
-* **Groq API Integration**
-  The backend sends prompts to the Groq API (large language model) to generate summaries, answers, and challenge questions. The API is called via HTTP requests with proper authorization.
+2. **Groq API Integration**
+   The backend sends prompts to the Groq API to generate:
 
-* **Context Management**
-  The uploaded document’s extracted text is cached in memory (`document_store`) for subsequent question-answering and challenge generation requests.
+   * Summaries of uploaded documents
+   * Answers to user questions based on document context
+   * Reasoning and inference challenge questions
 
-* **Question Answering**
-  When users ask questions, the backend crafts a prompt including the question and document context, sends it to Groq, and returns the generated answer.
+3. **Context Storage**
+   The extracted document text and filename are stored temporarily in memory for context reuse.
 
-* **Challenge Question Evaluation**
-  For user-submitted challenge answers, the backend:
+4. **Question Answering**
+   The backend constructs prompts combining user questions and document text and sends them to Groq API for contextual answers.
 
-  * Generates the "correct" answer via Groq API.
-  * Computes semantic similarity between the user answer and correct answer using Sentence Transformers (`all-MiniLM-L6-v2` model).
-  * Returns feedback based on similarity score.
+5. **Challenge Question Evaluation**
+   Upon receiving user answers to challenge questions:
 
-* **Challenge Question Generation**
-  On request, generates 3 reasoning and inference questions from the document text to test user comprehension.
+   * The backend gets the "correct" answer from Groq API.
+   * Uses Sentence Transformers (`all-MiniLM-L6-v2`) to compute semantic similarity between user and correct answers.
+   * Provides feedback based on similarity thresholds.
+
+6. **Challenge Question Generation**
+   Generates 3 reasoning questions from the document to test user understanding.
 
 ---
 
 ### Frontend (Streamlit)
 
-* **User Interface**
-  A clean, interactive UI guiding users to upload documents, read summaries, ask questions, and take comprehension challenges.
+* **Upload Interface**
+  Allows users to upload PDF or TXT files. Displays processing status and shows document summary once ready.
+
+* **Interactive Q\&A**
+  Users can ask free-form questions; answers and justifications are displayed dynamically.
+
+* **Comprehension Challenges**
+  Users can generate AI-created questions and submit answers for evaluation with immediate feedback.
 
 * **State Management**
-  Streamlit session state stores document summaries, messages, questions, and evaluation results for a seamless interactive experience.
-
-* **Interaction Flow**
-
-  * User uploads a document → backend extracts text and returns a summary.
-  * User asks questions → frontend sends them to backend and displays answers with justification.
-  * User tries challenge questions → frontend sends answers for evaluation and shows feedback and expected answers.
+  Uses Streamlit's session state to keep track of uploaded document, messages, challenge questions, and evaluation results for smooth user experience.
 
 * **Error Handling**
-  The UI provides clear messages when errors occur (e.g., API errors, missing uploads).
+  Provides clear error messages on upload failures, backend issues, or API errors.
 
 ---
 
-### Data Flow Summary
+### Data & Interaction Flow Summary
 
-1. **Upload** → Extract text → Summarize via Groq API → Return summary
-2. **Ask Question** → Prompt built with context → Send to Groq API → Return answer
-3. **Generate Challenge Questions** → Use document context → Request Groq API → Return questions
-4. **Evaluate Challenge Answer** → Get Groq answer → Compute semantic similarity → Provide feedback
+1. **Upload Document:**
+   Extract text → Summarize via Groq API → Show summary
+
+2. **Ask Question:**
+   Prompt constructed with question + document context → Groq API answer → Display answer & justification
+
+3. **Generate Challenge Questions:**
+   Use document context → Generate 3 inference questions via Groq API → Display questions
+
+4. **Evaluate Challenge Answers:**
+   Generate correct answer → Calculate semantic similarity → Provide detailed feedback to user
 
 ---
 
 ## License
 
-MIT License — See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## Contact
 
 Your Name
-Email: garimakumari2006@gmail.com
-GitHub: [https://github.com/Garimakumari14](https://github.com/Garimakumari14)
+Email: [your.email@example.com](mailto:your.email@example.com)
+GitHub: [https://github.com/yourusername](https://github.com/yourusername)
 
 ---
 
@@ -164,5 +175,5 @@ GitHub: [https://github.com/Garimakumari14](https://github.com/Garimakumari14)
 
 ---
 
-If you want, I can also help generate a `requirements.txt` or deployment instructions next!
+Would you like me to help you create a `requirements.txt` file or deployment guide next?
 ```
