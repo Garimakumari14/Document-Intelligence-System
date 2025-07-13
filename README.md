@@ -159,8 +159,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 
 
-Email: [your.email@example.com](mailto:garimakumari2006@example.com)
-GitHub: [https://github.com/yourusername](https://github.com/yourusername)
+Email: [garimakumari2006@gmail.com](mailto:your.email@example.com)
+GitHub: [https://github.com/Garimakumari14](https://github.com/yourusername)
 
 ---
 
