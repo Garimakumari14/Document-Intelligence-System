@@ -1,13 +1,13 @@
-#Document Intelligent System
+Document Intelligent System
 
 ````markdown
-# GenAI Research Assistant
+GenAI Research Assistant
 
 An AI-powered web application that helps users quickly understand large research documents. Upload PDFs or TXT files, get instant summaries, ask questions, and test your comprehension — all powered by Groq API and semantic similarity evaluation.
 
 ---
 
-## Features
+ Features
 
 - Upload `.pdf` or `.txt` research documents
 - Generate concise summaries using Groq AI models
