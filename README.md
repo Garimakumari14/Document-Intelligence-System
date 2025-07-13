@@ -1,9 +1,4 @@
-Great! You're using this GitHub repo:
-🔗 **[https://github.com/Garimakumari14/Document-Intelligence-System](https://github.com/Garimakumari14/Document-Intelligence-System)**
 
-Here's a professional, detailed `README.md` you can copy-paste into your repository:
-
----
 
 ### 📄 `README.md` for **Document Intelligence System**
 
