@@ -1,179 +1,173 @@
+Great! You're using this GitHub repo:
+🔗 **[https://github.com/Garimakumari14/Document-Intelligence-System](https://github.com/Garimakumari14/Document-Intelligence-System)**
 
-
-````markdown
-#  GenAI Research Assistant 
-
-An AI-powered web application that helps users quickly understand large research documents. Upload PDFs or TXT files, get instant summaries, ask questions, and test your comprehension — all powered by the Groq API and semantic similarity evaluation using Sentence Transformers.
+Here's a professional, detailed `README.md` you can copy-paste into your repository:
 
 ---
 
-** Features **
+### 📄 `README.md` for **Document Intelligence System**
 
-- Upload `.pdf` or `.txt` research documents
-- Generate concise summaries using Groq AI models
-- Ask detailed questions about the document with contextual answers
-- Test your understanding by answering AI-generated challenge questions
-- Semantic similarity scoring for answer evaluation using Sentence Transformers
-- Interactive and user-friendly frontend built with Streamlit
-- Lightweight backend built with Flask
+```markdown
+# 🧠 Document Intelligence System (Powered by Groq)
+
+A smart AI-powered assistant that helps you **summarize**, **interact**, and **test your understanding** of large documents using Groq’s LLaMA-3 API and advanced NLP models.
+
+![banner](https://img.shields.io/badge/GenAI%20Assistant-Groq%20%7C%20LLM-blueviolet) ![Python](https://img.shields.io/badge/Python-3.10-blue) ![Flask](https://img.shields.io/badge/Flask-Backend-orange) ![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-red)
 
 ---
 
-** Setup Instructions **
+## 🚀 Features
 
-1. Clone the repository
+- 📄 Upload `.pdf` or `.txt` files
+- ✨ Get summarized insights from long documents
+- 💬 Ask any question about the document
+- 🎯 Challenge yourself with AI-generated quiz questions
+- 🧠 Answer evaluation with similarity feedback using BERT embeddings
 
-```bash
-git clone https://github.com/yourusername/genai-research-assistant.git
-cd genai-research-assistant
+---
+
+## 📂 Project Structure
+
+```
+
+Document-Intelligence-System/
+│
+├── backend/                    # Flask + Groq API backend
+│   ├── app.py                  # Main backend logic
+│   └── .env                    # Environment variables (API key)
+│
+├── frontend/                   # Streamlit frontend
+│   └── streamlit\_app.py        # Interactive UI
+│
+├── utils/                      # Utility modules
+│   ├── pdf\_reader.py
+│   └── gpt\_helpers.py          # (if used for extensions)
+│
+├── README.md                   # Project documentation
+└── requirements.txt            # Dependencies
+
 ````
 
-### 2. Create and activate a virtual environment
+---
+
+## 🛠️ Tech Stack
+
+| Layer     | Technology                       |
+|-----------|----------------------------------|
+| Frontend  | `Streamlit`                      |
+| Backend   | `Flask`, `SentenceTransformers`  |
+| API       | `Groq LLaMA-3` via Chat API      |
+| NLP Tools | `MiniLM-L6-v2`, `Cosine Similarity` |
+| Format    | Supports `.pdf`, `.txt`          |
+
+---
+
+## 📸 Demo
+
+> Upload → Summarize → Ask → Quiz → Evaluate
+
+![screenshot](https://github.com/Garimakumari14/Document-Intelligence-System/assets/sample-demo.gif) <!-- optional GIF or image -->
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/Garimakumari14/Document-Intelligence-System.git
+cd Document-Intelligence-System
+````
+
+### 2. Install dependencies
+
+Make a virtual environment and activate it:
 
 ```bash
 python -m venv venv
-# macOS/Linux
-source venv/bin/activate
-# Windows
-venv\Scripts\activate
+source venv/bin/activate  # For Windows: venv\Scripts\activate
 ```
 
-### 3. Install dependencies
+Then install:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure environment variables
+### 3. Add your Groq API Key
 
-Create a `.env` file in the project root with your Groq API key:
+Create a `.env` file inside the `backend/` directory:
 
+```env
+GROQ_API_KEY=your-groq-api-key-here
 ```
-GROQ_API_KEY=your_groq_api_key_here
-```
 
-### 5. Run the backend server
+---
+
+### 4. Run the app
+
+In one terminal, run the **backend**:
 
 ```bash
-python backend.py
+cd backend
+python app.py
 ```
 
-### 6. Run the Streamlit frontend (in a new terminal)
+In another terminal, run the **frontend**:
 
 ```bash
-streamlit run frontend/streamlit_app.py
+cd frontend
+streamlit run streamlit_app.py
 ```
 
-### 7. Access the app
+> Open `http://localhost:8501` in your browser!
 
-Open your browser and navigate to:
+---
 
+## 🧠 How It Works (Architecture / Reasoning Flow)
+
+```text
+User Uploads File → Flask Extracts Text
+            ↓
+      Groq LLaMA-3 Summarizes
+            ↓
+   Streamlit Displays Summary
+            ↓
+User Asks a Question → Groq Answers It
+            ↓
+Challenge Questions Generated
+            ↓
+User Answers → MiniLM Model Evaluates Similarity
 ```
-http://localhost:8501
-```
 
 ---
 
-## Architecture & Reasoning Flow
+## 📌 To-Do (Future Improvements)
 
-### Overview
-
-The GenAI Research Assistant consists of two main components:
-
-* **Backend:** A Flask API server handling document processing, AI calls, and answer evaluation.
-* **Frontend:** A Streamlit web app providing an interactive user interface.
+* [ ] Support DOCX, HTML, Markdown files
+* [ ] Chat history and bookmarking
+* [ ] Answer confidence scoring
+* [ ] UI redesign with Tailwind or Bootstrap
 
 ---
 
-### Backend (Flask)
+## 🤝 Contributing
 
-1. **Document Upload & Text Extraction**
-   Users upload PDF or TXT files. The backend extracts raw text using PyPDF2 for PDFs and standard decoding for TXT files.
-
-2. **Groq API Integration**
-   The backend sends prompts to the Groq API to generate:
-
-   * Summaries of uploaded documents
-   * Answers to user questions based on document context
-   * Reasoning and inference challenge questions
-
-3. **Context Storage**
-   The extracted document text and filename are stored temporarily in memory for context reuse.
-
-4. **Question Answering**
-   The backend constructs prompts combining user questions and document text and sends them to Groq API for contextual answers.
-
-5. **Challenge Question Evaluation**
-   Upon receiving user answers to challenge questions:
-
-   * The backend gets the "correct" answer from Groq API.
-   * Uses Sentence Transformers (`all-MiniLM-L6-v2`) to compute semantic similarity between user and correct answers.
-   * Provides feedback based on similarity thresholds.
-
-6. **Challenge Question Generation**
-   Generates 3 reasoning questions from the document to test user understanding.
+1. Fork this repository
+2. Create a new branch (`git checkout -b feature-xyz`)
+3. Commit your changes (`git commit -m 'Add feature xyz'`)
+4. Push to the branch (`git push origin feature-xyz`)
+5. Create a pull request
 
 ---
 
-### Frontend (Streamlit)
+## 📜 License
 
-* **Upload Interface**
-  Allows users to upload PDF or TXT files. Displays processing status and shows document summary once ready.
-
-* **Interactive Q\&A**
-  Users can ask free-form questions; answers and justifications are displayed dynamically.
-
-* **Comprehension Challenges**
-  Users can generate AI-created questions and submit answers for evaluation with immediate feedback.
-
-* **State Management**
-  Uses Streamlit's session state to keep track of uploaded document, messages, challenge questions, and evaluation results for smooth user experience.
-
-* **Error Handling**
-  Provides clear error messages on upload failures, backend issues, or API errors.
-
----
-
-### Data & Interaction Flow Summary
-
-1. **Upload Document:**
-   Extract text → Summarize via Groq API → Show summary
-
-2. **Ask Question:**
-   Prompt constructed with question + document context → Groq API answer → Display answer & justification
-
-3. **Generate Challenge Questions:**
-   Use document context → Generate 3 inference questions via Groq API → Display questions
-
-4. **Evaluate Challenge Answers:**
-   Generate correct answer → Calculate semantic similarity → Provide detailed feedback to user
-
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Contact
-
-
-Email: [garimakumari2006@gmail.com](mailto:your.email@example.com)
-GitHub: [https://github.com/Garimakumari14](https://github.com/yourusername)
-
----
-
-## Acknowledgments
-
-* [Groq API](https://groq.com/)
-* [Sentence Transformers](https://www.sbert.net/)
-* [Streamlit](https://streamlit.io/)
-* [Flask](https://flask.palletsprojects.com/)
+MIT License © 2025 [Garima Kumari](https://github.com/Garimakumari14)
 
 ```
 
 ---
 
-Would you like me to help you create a `requirements.txt` file or deployment guide next?
+Would you also like a `requirements.txt` file auto-generated from your code dependencies?
 ```
