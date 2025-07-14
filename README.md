@@ -53,7 +53,7 @@ GROQ_API_KEY=your_groq_api_key_here
 ### 5. Run the backend server
 
 ```bash
-python backend.py
+python app.py
 ```
 
 ### 6. Run the Streamlit frontend (in a new terminal)
