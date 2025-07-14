@@ -146,22 +146,6 @@ The GenAI Research Assistant consists of two main components:
 4. **Evaluate Challenge Answers:**
    Generate correct answer → Calculate semantic similarity → Provide detailed feedback to user
 
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Contact
-
-Your Name
-Email: [garimakumari2006@gmail.com](mailto:your.email@example.com)
-GitHub: [https://github.com/Garimakumari14](https://github.com/yourusername)
-
----
-
 ## Acknowledgments
 
 * [Groq API](https://groq.com/)
@@ -169,9 +153,4 @@ GitHub: [https://github.com/Garimakumari14](https://github.com/yourusername)
 * [Streamlit](https://streamlit.io/)
 * [Flask](https://flask.palletsprojects.com/)
 
-```
 
----
-
-Would you like me to help you create a `requirements.txt` file or deployment guide next?
-```
