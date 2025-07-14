@@ -1,0 +1,48 @@
+{
+  "info": {
+    "name": "GROQ API - LLaMA 3 Chat Completion",
+    "_postman_id": "groq-api-chat-completion-001",
+    "description": "Postman collection to test LLaMA 3 model on GROQ API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Chat Completion - LLaMA 3",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer gsk_your_actual_api_key_here",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"llama3-70b-8192\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Tell me a fun fact about artificial intelligence.\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "https://api.groq.com/openai/v1/chat/completions",
+          "protocol": "https",
+          "host": [
+            "api",
+            "groq",
+            "com"
+          ],
+          "path": [
+            "openai",
+            "v1",
+            "chat",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
