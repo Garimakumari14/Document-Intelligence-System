@@ -1,0 +1,9 @@
+Flask
+PyPDF2
+transformers
+torch
+sentence-transformers
+sentencepiece
+tiktoken
+streamlit
+requests
