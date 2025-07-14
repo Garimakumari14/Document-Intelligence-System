@@ -1,6 +1,4 @@
-Certainly! Here's a clean, professional **README.md** file for your project with clear **Setup Instructions** and a detailed **Architecture & Reasoning Flow** section:
 
-````markdown
 # GenAI Research Assistant
 
 An AI-powered web application that helps users quickly understand large research documents. Upload PDFs or TXT files, get instant summaries, ask questions, and test your comprehension — all powered by the Groq API and semantic similarity evaluation using Sentence Transformers.
