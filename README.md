@@ -1,6 +1,5 @@
 
-# GenAI Research Assistant
-
+# Document Intelligence System
 An AI-powered web application that helps users quickly understand large research documents. Upload PDFs or TXT files, get instant summaries, ask questions, and test your comprehension — all powered by the Groq API and semantic similarity evaluation using Sentence Transformers.
 
 ---
